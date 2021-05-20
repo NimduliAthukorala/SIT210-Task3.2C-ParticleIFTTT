@@ -1,0 +1,29 @@
+int photoresistor = A4;
+
+
+
+void setup()
+{
+
+
+   pinMode(photoresistor, INPUT);
+  
+}
+
+
+void loop()
+{
+    int lightlevel = analogRead(photoresistor);
+    int i = 1;
+    
+    if (lightlevel > 1)
+    {
+        Particle.publish("Light","Light", PRIVATE);
+    }
+    else if (lightlevel < 1)
+    {
+        Particle.publish("Light","No_Light", PRIVATE);
+    }
+    delay(10000);
+  
+}
